@@ -1,0 +1,7 @@
+E:\1.LearnProject_Git\LeetCodeExercise\LeetCodeExercise\LeetCodeExercise\bin\Debug\LeetCodeExercise.exe.config
+E:\1.LearnProject_Git\LeetCodeExercise\LeetCodeExercise\LeetCodeExercise\bin\Debug\LeetCodeExercise.exe
+E:\1.LearnProject_Git\LeetCodeExercise\LeetCodeExercise\LeetCodeExercise\bin\Debug\LeetCodeExercise.pdb
+E:\1.LearnProject_Git\LeetCodeExercise\LeetCodeExercise\LeetCodeExercise\obj\Debug\LeetCodeExercise.csprojAssemblyReference.cache
+E:\1.LearnProject_Git\LeetCodeExercise\LeetCodeExercise\LeetCodeExercise\obj\Debug\LeetCodeExercise.csproj.CoreCompileInputs.cache
+E:\1.LearnProject_Git\LeetCodeExercise\LeetCodeExercise\LeetCodeExercise\obj\Debug\LeetCodeExercise.exe
+E:\1.LearnProject_Git\LeetCodeExercise\LeetCodeExercise\LeetCodeExercise\obj\Debug\LeetCodeExercise.pdb
