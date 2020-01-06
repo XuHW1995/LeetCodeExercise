@@ -141,5 +141,52 @@ namespace LeetCodeExercise
             return left;
         }
         #endregion
+
+        #region 169.多数元素
+
+        public int MajorityElement(int[] nums)
+        {
+            Dictionary<int, int> value2CountDic = new Dictionary<int, int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (value2CountDic.ContainsKey(nums[i]))
+                {
+                    value2CountDic[nums[i]] = value2CountDic[nums[i]] + 1;
+                }
+                else
+                    value2CountDic[nums[i]] = 1;
+            }
+
+            int mostCount = 0;
+            int mostKey = 0;
+            foreach (KeyValuePair<int, int> kv in value2CountDic)
+            {
+                if (kv.Value > mostCount)
+                {
+                    mostCount = kv.Value;
+                    mostKey = kv.Key;
+                }
+            }
+            return mostKey;
+        }
+
+        //投票法
+        public int MajorityElement2(int[] nums)
+        {
+            int sum = 0;
+            int mostNum = 0;
+            for (int i = 0;i < nums.Length; i++)
+            {
+                if (sum == 0)
+                {
+                    mostNum = nums[i];
+                }
+
+                sum += nums[i] == mostNum ? 1 : -1;
+            }
+
+            return mostNum;
+        }
+        #endregion
     }
 }
