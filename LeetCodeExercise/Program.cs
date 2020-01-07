@@ -188,5 +188,12 @@ namespace LeetCodeExercise
             return mostNum;
         }
         #endregion
+
+        #region Excel 序列号
+        public int TitleToNumber(string s)
+        {
+            return 0;
+        }
+        #endregion
     }
 }
