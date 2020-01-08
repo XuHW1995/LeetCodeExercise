@@ -8,7 +8,7 @@ namespace LeetCodeExercise
 {
     public static class ArrayType
     {
-        #region 排序数组中删除重复元素
+        #region 1.排序数组中删除重复元素
         /*
             给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
             不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
@@ -32,7 +32,7 @@ namespace LeetCodeExercise
          }
         #endregion
 
-        #region 买卖股票的最佳时机
+        #region 2.买卖股票的最佳时机
         /*
             给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
 
@@ -63,7 +63,7 @@ namespace LeetCodeExercise
         public static int MaxProfit(int[] prices)
         {
             int maxProfit = 0;
-            for (int i = 0; i < prices.Length; i++)
+            for (int i = 1; i < prices.Length; i++)
             {
                 if (prices[i] > prices[i - 1])
                 {
@@ -71,6 +71,68 @@ namespace LeetCodeExercise
                 }
             }
             return maxProfit;
+        }
+        #endregion
+
+        #region 3.旋转数组
+        // 时间复杂度等于0（n*k）
+        // 空间复杂度0（1）
+        public static void Rotate1(int[] nums, int k)
+        {           
+            if (k == 0)
+            {
+                return;
+            }
+            while(k > 0)
+            {
+                int last = 0;
+                for (int i = nums.Length - 1; i >= 0; i--)
+                {
+                    if (i == nums.Length - 1)
+                    {
+                        last = nums[i];
+                    }
+
+                    if (i == 0)
+                    {
+                        nums[0] = last; 
+                    }else
+                    {
+                        nums[i] = nums[i - 1];
+                    }
+                }
+                k = k-1;
+            }
+        }
+
+        //反转数组
+        /*  
+            原始数组                  : 1 2 3 4 5 6 7
+            反转所有数字后             : 7 6 5 4 3 2 1
+            反转前 k 个数字后          : 5 6 7| 4 3 2 1
+            反转后 n-k 个数字后        : 5 6 7| 1 2 3 4 --> 结果
+         */
+        // 时间复杂度等于0（n）
+        // 空间复杂度0（1）
+        public static void Rotate2(int[] nums, int k)
+        {
+            int middleIndex = k % nums.Length;
+            Reversal(nums, 0, nums.Length - 1);
+            Reversal(nums, 0, middleIndex - 1);
+            Reversal(nums, middleIndex, nums.Length - 1);
+        }
+
+        static void Reversal(int[] nums, int beginIndex, int endIndex)
+        {
+            while(beginIndex < endIndex)
+            {
+                int temp = nums[endIndex];
+                nums[endIndex] = nums[beginIndex];
+                nums[beginIndex] = temp;
+
+                beginIndex++;
+                endIndex--;
+            }
         }
         #endregion
     }
