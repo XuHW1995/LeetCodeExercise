@@ -10,14 +10,15 @@ namespace LeetCodeExercise
     {
         static void Main(string[] args)
         {
-            int[] testArr = { 1, 3, 2, 0, 4};
+            int[] testArr = {8, 7, 6, 5, 4, 3, 2, 1, 0 };
 
             //BubbleSort(testArr); 
             //SelectSort(testArr);
-            MergeSort(testArr);
+            //MergeSort(testArr);
             //QuickSort(testArr);
 
-            printArr(testArr);
+
+            printArr(ArrayType.PlusOne(testArr));
         }
         static void printArr(int[] arrs)
         {

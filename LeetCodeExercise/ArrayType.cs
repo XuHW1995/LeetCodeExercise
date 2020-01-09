@@ -32,7 +32,7 @@ namespace LeetCodeExercise
          }
         #endregion
 
-        #region 2.买卖股票的最佳时机
+        #region 2.买卖股票的最佳时机2
         /*
             给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
 
@@ -136,7 +136,7 @@ namespace LeetCodeExercise
         }
         #endregion
 
-        #region 存在重复
+        #region 4.存在重复
         /*
             给定一个整数数组，判断是否存在重复元素。
             如果任何值在数组中出现至少两次，函数返回 true。如果数组中每个元素都不相同，则返回 false。
@@ -154,6 +154,138 @@ namespace LeetCodeExercise
                 if (nums[i] == nums[i + 1]) return true;
             }
             return false;
+        }
+
+        #endregion
+
+        #region 5.只出现一次的数字
+        /*
+            给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
+
+            说明：
+
+            你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？
+
+            示例 1:
+
+            输入: [2,2,1]
+            输出: 1
+             */
+        public static int SingleNumber(int[] nums)
+        {
+            HashSet<int> tempList = new HashSet<int>();
+            foreach (int value in nums)
+            {
+                if (tempList.Contains(value))
+                {
+                    tempList.Remove(value);
+                }
+                else
+                {
+                    tempList.Add(value);
+                }
+            }
+
+            return tempList.First();
+        }
+        #endregion
+
+        #region 6.俩个数集的交集2
+
+        public static int[] Intersect(int[] nums1, int[] nums2)
+        {
+            //遍历第一个数组，把所有元素的出现次数记录在表里
+            Dictionary<int, int> value2Count = new Dictionary<int, int>(); 
+            for (int i = 0; i< nums1.Length; i++)
+            {
+                if (!value2Count.ContainsKey(nums1[i]))
+                {
+                    value2Count.Add(nums1[i], 1);
+                }
+                else
+                {
+                    value2Count[nums1[i]] = value2Count[nums1[i]] + 1;
+                }
+            }
+
+            //遍历第二个数组，找到相同的元素，且出现次数大于0，存入结果数组
+            List<int> temp = new List<int>();
+            for (int j = 0; j < nums2.Length; j++)
+            {
+                if (value2Count.ContainsKey(nums2[j])
+                    && value2Count[nums2[j]] > 0)
+                {
+                    value2Count[nums2[j]] = value2Count[nums2[j]] - 1;
+                    temp.Add(nums2[j]);
+                }
+            }
+
+            return temp.ToArray();
+        }
+        #endregion
+
+        #region 7.加1
+        /*
+            给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。
+            最高位数字存放在数组的首位， 数组中每个元素只存储单个数字。
+            你可以假设除了整数 0 之外，这个整数不会以零开头。
+
+            示例 1:
+            输入: [1,2,3]
+            输出: [1,2,4]
+            解释: 输入数组表示数字 123。
+         */
+        //取巧方法，数组不能超过9位数，不然会超出int限制
+        public static int[] PlusOne(int[] digits)
+        {
+            int num = 0;
+            for (int i = digits.Length - 1; i >= 0 ; i--)
+            {
+                num += digits[i] * (int)Math.Pow(10, digits.Length - 1 - i);
+            }
+            num = num + 1;
+            List<int> newList = new List<int>();
+            for (int weight = num.ToString().Length- 1; weight >=0 ; weight --)
+            {
+                newList.Add((num / (int)Math.Pow(10, weight)) % 10);
+            }
+
+            return newList.ToArray();
+        }
+
+        public static int[] PlusOne2(int[] digits)
+        {
+            bool isUp = false;
+            for (int i = digits.Length - 1; i >= 0; i--)
+            {
+                //个位+1
+                if (i == digits.Length - 1)
+                {
+                    isUp = digits[i] + 1 > 9 ? true : false;
+                    digits[i] = (digits[i] + 1) % 10;
+                }
+                else
+                {
+                    if (isUp)
+                    {
+                        isUp = digits[i] + 1 > 9 ? true : false;
+                        digits[i] = (digits[i] + 1) % 10;
+                    }
+                    else
+                    {
+                        return digits;
+                    }
+                }
+            }
+
+            //如果最后一位还需要进位，结果数组长度+1
+            if (isUp)
+            {
+                digits = new int[digits.Length + 1];//首位扩充
+                digits[0] = 1;
+            }
+
+            return digits;
         }
 
         #endregion
