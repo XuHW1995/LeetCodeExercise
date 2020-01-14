@@ -288,5 +288,38 @@ namespace LeetCodeExercise
             return digits;
         }
         #endregion
+
+        #region 8.移动零
+        /*
+            给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+            示例:
+            输入: [0,1,0,3,12]
+            输出: [1,3,12,0,0]
+        */
+
+        //双指针
+        //时间复杂度：O(n)，空间复杂度O(1)
+        public static void MoveZeroes(int[] nums)
+        {
+            //非0元素个数，相当于虚拟数组下标
+            int notZeroCount = 0;
+            for(int i = 0; i< nums.Length;i++)
+            {
+                //非0元素放在原数组的对应位置
+                //由于i是快指针，所以不会出现原数据丢失的情况
+                if (nums[i] != 0)
+                {
+                    nums[notZeroCount] = nums[i];
+                    notZeroCount++;
+                }
+            }
+
+            //非0元素个数之后的数据全部置为0
+            for (int i = notZeroCount; i < nums.Length; i++)
+            {
+                nums[i] = 0;
+            }
+        }
+        #endregion
     }
 }
