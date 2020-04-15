@@ -322,5 +322,23 @@ namespace LeetCodeExercise
 
         }
         #endregion
+
+        #region 9.俩数之和
+        public static int[] TwoSum(int[] nums, int target)
+        {
+            Dictionary<int, int> numValue2Index = new Dictionary<int, int>();
+            for (int i = 0; i<nums.Length; i++)
+            {
+                if (numValue2Index.ContainsKey(target - nums[i]))
+                {
+                    return new int[] { i, numValue2Index[target - nums[i]] };
+                }
+                
+                numValue2Index[nums[i]] = i;
+            }
+
+            return null;
+        }
+        #endregion
     }
 }

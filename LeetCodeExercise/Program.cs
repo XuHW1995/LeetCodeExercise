@@ -18,7 +18,7 @@ namespace LeetCodeExercise
             //QuickSort(testArr);
 
 
-            printArr(ArrayType.PlusOne(testArr));
+            printArr(ArrayType.TwoSum(new int[] { 1, 2, 3, 1, 4 }, 7));
         }
         static void printArr(int[] arrs)
         {
